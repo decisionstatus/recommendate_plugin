@@ -32,7 +32,7 @@ export function AIConfigForm({ config, onChange }: AIConfigFormProps) {
             label="Confidence Threshold"
             labelHidden
             value={config.confidence_threshold * 100}
-            onChange={(value) => onChange({ ...config, confidence_threshold: (typeof value === 'number' ? value : value[0]) / 100 })}
+            onChange={(value) => onChange({ ...config, confidence_threshold: value / 100 })}
             min={0}
             max={100}
             step={5}
@@ -50,7 +50,7 @@ export function AIConfigForm({ config, onChange }: AIConfigFormProps) {
             label="Max Results"
             labelHidden
             value={config.max_results}
-            onChange={(value) => onChange({ ...config, max_results: typeof value === 'number' ? value : value[0] })}
+            onChange={(value) => onChange({ ...config, max_results: value })}
             min={1}
             max={50}
             step={1}
@@ -68,7 +68,7 @@ export function AIConfigForm({ config, onChange }: AIConfigFormProps) {
             label="Diversity Factor"
             labelHidden
             value={(config.diversity_factor || 0.5) * 100}
-            onChange={(value) => onChange({ ...config, diversity_factor: (typeof value === 'number' ? value : value[0]) / 100 })}
+            onChange={(value) => onChange({ ...config, diversity_factor: value / 100 })}
             min={0}
             max={100}
             step={5}
@@ -86,7 +86,7 @@ export function AIConfigForm({ config, onChange }: AIConfigFormProps) {
             label="Personalization Weight"
             labelHidden
             value={(config.personalization_weight || 0.7) * 100}
-            onChange={(value) => onChange({ ...config, personalization_weight: (typeof value === 'number' ? value : value[0]) / 100 })}
+            onChange={(value) => onChange({ ...config, personalization_weight: value / 100 })}
             min={0}
             max={100}
             step={5}
@@ -104,7 +104,7 @@ export function AIConfigForm({ config, onChange }: AIConfigFormProps) {
             label="Recency Weight"
             labelHidden
             value={(config.recency_weight || 0.3) * 100}
-            onChange={(value) => onChange({ ...config, recency_weight: (typeof value === 'number' ? value : value[0]) / 100 })}
+            onChange={(value) => onChange({ ...config, recency_weight: value / 100 })}
             min={0}
             max={100}
             step={5}
