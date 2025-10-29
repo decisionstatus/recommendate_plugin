@@ -27,7 +27,7 @@ export function UseCaseCard({ config, onEdit, onToggle }: UseCaseCardProps) {
               <Text as="h3" variant="headingMd" fontWeight="semibold">
                 {config.name}
               </Text>
-              <Badge tone={config.is_enabled ? 'success' : 'subdued'}>
+              <Badge tone={config.is_enabled ? 'success' : 'info'}>
                 {config.is_enabled ? 'Active' : 'Disabled'}
               </Badge>
             </InlineStack>

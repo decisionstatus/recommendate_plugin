@@ -16,10 +16,10 @@ export function ProductTable({ products, selectable = false, onSelect }: Product
   const { selectedResources, allResourcesSelected, handleSelectionChange } =
     useIndexResourceState(products);
 
-  const handleSelection = (selection: typeof selectedResources) => {
-    handleSelectionChange(selection);
-    if (onSelect) {
-      onSelect(Array.from(selection));
+  const handleSelection = (selectionType: any, isSelecting: boolean, selection?: string | any) => {
+    handleSelectionChange(selectionType, isSelecting, selection);
+    if (onSelect && selectionType === 'multi') {
+      onSelect(selectedResources as any);
     }
   };
 
@@ -27,7 +27,7 @@ export function ProductTable({ products, selectable = false, onSelect }: Product
     <IndexTable.Row
       id={product.id}
       key={product.id}
-      selected={selectedResources.has(product.id)}
+      selected={(selectedResources as any).includes(product.id)}
       position={index}
     >
       <IndexTable.Cell>
@@ -67,7 +67,7 @@ export function ProductTable({ products, selectable = false, onSelect }: Product
     <IndexTable
       resourceName={resourceName}
       itemCount={products.length}
-      selectedItemsCount={allResourcesSelected ? 'All' : selectedResources.size}
+      selectedItemsCount={allResourcesSelected ? 'All' : (selectedResources as any).length}
       onSelectionChange={handleSelection}
       headings={[
         { title: 'Product' },
